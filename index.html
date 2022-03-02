@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        html{width:100%;}
+        body{width:100;
+        background-color:#DDD;}
+        .sppp{
+            font-size: x-large;
+            font-weight: bold;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container border" id="toBeReplaced">
+        <form id="myForm">
+            <h1 class="display-3">FACTURA</h1>
+            <hr>
+            <table>
+                <tr>
+                    <td style="text-align: right"><label class="control-label" for="serie">Serie:</label></td>
+                    <td><input class='form-control my-2' type="text" name="serie" id="serie" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><label class="control-label" for="nr">Nr.:</label></td>
+                    <td><input class='form-control my-2' type="number" name="nr" id="nr" required></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right"><label class="control-label" for="data">Data:</label></td>
+                    <td><input class='form-control my-2' type="date" name="data" id="data"></td>
+                </tr>
+            </table>
+
+            <h2 class="mt-4">Cota TVA:<hr></h2>
+            <div id="cota-tva" class='d-inline-block bg-white p-3'>
+                <input type="radio" name="cotaTva" id="0%" value="0" checked>
+                <label for="0%">0%</label><br>
+                <input type="radio" name="cotaTva" id="19%" value="0.19">
+                <label for="19%">19%</label>
+            </div>
+            <h2 class="mt-4">Date furnizor:<hr></h2>
+            <i>*sunt preincarcate datele ultimului furnizor folosit pe acest dispozitiv</i>
+            <br><br>
+            <table style="width: 80%">
+                <tr>
+                    <td style="width: 10%" align="right"><label for="nume-furnizor">Nume:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="nume-furnizor" required></td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" align="right"><label for="cif-furnizor">CIF:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="cif-furnizor" required></td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" align="right"><label for="reg-com-furnizor">Reg. Com.:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="reg-com-furnizor"></td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" align="right"><label for="iban-furnizor">IBAN:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="iban-furnizor"></td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" align="right"><label for="banca-furnizor">Banca:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="banca-furnizor"></td>
+                </tr>
+                <tr>
+                    <td style="width: 10%" align="right"><label for="adresa-furnizor">Adresa:</label></td>
+                    <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="adresa-furnizor" required></td>
+                </tr>
+            </table>
+
+            <h2 class="mt-4">Date client:<hr></h2>
+            <div>
+                <label for="client-selector">Alege client:</label>
+                <select name="client-selector" id="client-selector" style="min-width: 200px">
+                  <option value=""></option>
+                </select>
+                <br>
+                <i>*alege client facturat anterior pe acest dispozitiv</i>
+            </div>
+            <br><br>
+            <div class='d-inline-block bg-white p-3 mb-3'>
+                <div id="tip-client">
+                    <input type="radio" name="optiune-client" id="client-pf" value="client-pf" checked>
+                    <label for="client-pf">client persoana fizica</label><br>
+                    <input type="radio" name="optiune-client" id="client-pj" value="client-pj">
+                    <label for="client-pj">client persoana juridica</label>
+                </div>
+            </div>
+            <br>
+            <div id="date-client">
+                <table style="width: 80%">
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="nume-client">Nume:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="nume-client" required></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="adresa-client">Adresa:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="adresa-client" required></td>
+                    </tr>
+                </table>
+            </div>
+            <h2 class="mt-4">Adauga produse:<hr></h2>
+            <div id="produse">
+                <table style="width: 80%">
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="denumire-produs">Produs:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="denumire-produs"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="um">U.M.:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' style="width: 100%" type="text" id="um"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="cantitate">Cantitate:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' type="number" style="width: 100%" id="cantitate"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%" align="right"><label for="pret-unitar">Pret unitar:</label></td>
+                        <td style="width: 90%"><input class='form-control my-2' type="number" style="width: 100%" id="pret-unitar"></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 10%" align="right"></td>
+                        <td style="width: 90%" align="left"><br><button class="btn btn-primary btn-lg" id="adauga-produs">Adauga produs</button>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <table class="table table-sm d-none">
+                <thead class='bg-dark text-light'>
+                    <tr>
+                    <th></th>
+                        <th>Produs/Serviciu</th>
+                        <th>U.M.</th>
+                        <th>Cantitate</th>
+                        <th>Pret unitar</th>
+                        <th>Valoare</th>
+                        <th>Valoare TVA</th>
+                    </tr>
+                </thead>
+                <tbody id='product-preview'>
+    
+                </tbody>
+                <tfoot id='table-footer'>
+    
+                </tfoot>
+            </table>
+            <br>
+            <button class="btn btn-success btn-lg d-none" id="genereaza-factura">Genereaza factura PDF</button>
+            <button class="btn btn-warning btn-lg d-none" id="chitanta"><span class="sppp">[+]</span> Chitanta</button>
+            <div id='tbl-chitanta' class='d-none'>
+                <table>
+                    <tr>
+                        <td style="text-align: right"><label class="control-label" for="seriech">Serie chitanta:</label></td>
+                        <td><input class='form-control my-2' type="text" name="seriech" id="seriech"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><label class="control-label" for="nrch">Nr. chitanta:</label></td>
+                        <td><input class='form-control my-2' type="number" name="nrch" id="nrch"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><label class="control-label" for="data">Data chitanta:</label></td>
+                        <td><input class='form-control my-2' type="date" name="datach" id="datach"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><label class="control-label" for="sumach">Suma:</label></td>
+                        <td><input class='form-control my-2' type="number" step="any" name="sumach" id="sumach" placeholder="0"></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right"><label class="control-label" for="sumacuvintech">Suma in cuvinte:</label></td>
+                        <td><input class='form-control my-2' type="text" name="sumacuvintech" id="sumacuvintech" placeholder="zero RON"></td>
+                    </tr>
+                </table>
+                <button class="btn btn-warning btn-lg" id="genereaza-chitanta">Genereaza chitanta PDF</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.62/vfs_fonts.js"></script>
+    <script type="text/javascript" src="./app_v19.js"></script>
+</body>
+</html>
